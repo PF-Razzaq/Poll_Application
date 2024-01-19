@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
+  {% block head %}
+
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -18,8 +20,10 @@
     <title>{% block title %}My App{% endblock %}</title>
     <!-- Include Bootstrap 5 CSS link here -->
   </head>
+  {% endblock head %}
+
   <body>
-    <div class="container">{% block content %}{% endblock %}</div>
+    <div class="">{% block content %}{% endblock %}</div>
     <!-- Include Bootstrap 5 JS and other scripts here -->
   </body>
   <script

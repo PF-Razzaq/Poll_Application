@@ -25,7 +25,6 @@ def register(request):
             return redirect('login')  # Assuming you have a login page with the name 'login'
     else:
         form = RegistrationForm()
-
     return render(request, 'register.html', {'form': form})
 def login_view(request):
     if request.method == 'POST':
@@ -44,3 +43,6 @@ def login_view(request):
             messages.error(request, 'Invalid email or password.')
 
     return render(request, 'login.html')  # Replace 'login.html' with the actual login template path
+
+def index_view(request):
+    return render(request,'index.html')

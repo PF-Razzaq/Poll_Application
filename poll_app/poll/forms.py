@@ -1,9 +1,18 @@
 from django import forms
 from django.core.exceptions import ValidationError
+import re
+
+def validate_custom_email(value):
+    # Define your custom regex pattern
+    pattern = re.compile(r'^(?=.*[!@#$%^&*(),.?":{}|<>])[A-Za-z\d!@#$%^&*(),.?":{}|<>]{6,}$')
+    
+    # Use the regex pattern to match the email
+    if not pattern.match(value):
+        raise ValidationError('Enter a valid email address with at least 1 special character and a minimum length of 6 characters.')
 
 class RegistrationForm(forms.Form):
     name = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Your Name'}))
-    email = forms.EmailField(widget=forms.EmailInput(attrs={'class': 'form-control', 'placeholder': 'Your Email'}))
+    email = forms.EmailField(widget=forms.EmailInput(attrs={'class': 'form-control', 'placeholder': 'Your Email'}),validators=[validate_custom_email],error_messages={'invalid': 'Custom error message for invalid email.'})
     age = forms.IntegerField(widget=forms.NumberInput(attrs={'class': 'form-control'}))
     cnic = forms.CharField(max_length=15, widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Your CNIC'}))
     mobile_no = forms.CharField(max_length=15, widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Your Mobile No.'}))

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Registration Form</title>
+    <!-- Add any additional styling or linking of external stylesheets if needed -->
+    <link rel="stylesheet" href="path/to/style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h2>Registration Form</h2>
+      <form method="post" action="/registration/">
+        {% csrf_token %}
+
+        <div>
+          <label for="id_name">Your Name:</label>
+          <input
+            type="text"
+            name="name"
+            id="id_name"
+            class="form-control"
+            placeholder="Your Name"
+            required
+          />
+        </div>
+
+        <div>
+          <label for="id_email">Your Email:</label>
+          <input
+            type="email"
+            name="email"
+            id="id_email"
+            class="form-control"
+            placeholder="Your Email"
+            required
+          />
+          <!-- Add your custom error handling here if needed -->
+        </div>
+
+        <div>
+          <label for="id_age">Your Age:</label>
+          <input
+            type="number"
+            name="age"
+            id="id_age"
+            class="form-control"
+            required
+          />
+          <!-- Add your custom error handling here if needed -->
+        </div>
+
+        <div>
+          <label for="id_cnic">Your CNIC:</label>
+          <input
+            type="text"
+            name="cnic"
+            id="id_cnic"
+            class="form-control"
+            placeholder="Your CNIC"
+            required
+          />
+        </div>
+
+        <div>
+          <label for="id_mobile_no">Your Mobile No.:</label>
+          <input
+            type="text"
+            name="mobile_no"
+            id="id_mobile_no"
+            class="form-control"
+            placeholder="Your Mobile No."
+            required
+          />
+        </div>
+
+        <div>
+          <label for="id_nationality">Your Nationality:</label>
+          <input
+            type="text"
+            name="nationality"
+            id="id_nationality"
+            class="form-control"
+            placeholder="Your Nationality"
+            required
+          />
+        </div>
+
+        <div>
+          <label>Your Gender:</label>
+          <div class="form-check-inline">
+            <input
+              type="radio"
+              name="gender"
+              id="id_gender_male"
+              class="form-check-input"
+              value="Male"
+            />
+            <label for="id_gender_male" class="form-check-label">Male</label>
+
+            <input
+              type="radio"
+              name="gender"
+              id="id_gender_female"
+              class="form-check-input"
+              value="Female"
+            />
+            <label for="id_gender_female" class="form-check-label"
+              >Female</label
+            >
+          </div>
+        </div>
+
+        <div>
+          <label for="id_password">Your Password:</label>
+          <input
+            type="password"
+            name="password"
+            id="id_password"
+            class="form-control"
+            placeholder="Your Password"
+            required
+          />
+        </div>
+
+        <div>
+          <label for="id_confirm_password">Confirm Password:</label>
+          <input
+            type="password"
+            name="confirm_password"
+            id="id_confirm_password"
+            class="form-control"
+            placeholder="Confirm Password"
+            required
+          />
+          <!-- Add your custom error handling here if needed -->
+        </div>
+
+        <button type="submit">Register</button>
+      </form>
+    </div>
+  </body>
+</html>
