@@ -16,7 +16,7 @@ class RegistrationForm(forms.Form):
     age = forms.IntegerField(widget=forms.NumberInput(attrs={'class': 'form-control'}))
     cnic = forms.CharField(max_length=15, widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Your CNIC'}))
     mobile_no = forms.CharField(max_length=15, widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Your Mobile No.'}))
-    nationality = forms.CharField(max_length=50, widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Your Nationality'}))
+    nationality = forms.CharField(max_length=50, widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Your Nationality','value':'Pakistan'}))
     GENDER_CHOICES = [('Male', 'Male'), ('Female', 'Female')]
         
     gender = forms.ChoiceField(

@@ -21,12 +21,12 @@
 
   <body>
     <div class="">
-      <div class="container">
-        <h2>Login</h2>
+      <div class="container col-md-4">
+        <h2 class="text-center my-5">Login</h2>
         <form
           method="post"
           action="{% url 'login' %}"
-          class="needs-validation"
+          class="needs-validation border p-5"
           novalidate
         >
           {% csrf_token %}
@@ -47,10 +47,28 @@
           </div>
 
           <button type="submit" class="btn btn-primary">Login</button>
-          <a href="{% url 'register' %}" class="btn btn-primary"
+          <a href="{% url 'registration' %}" class="btn btn-primary"
             >Registration User</a
           >
         </form>
+        {% if messages %}
+        <ul class="messages">
+          {% for message in messages %}
+          <p
+            {%
+            if
+            message.tags
+            %}
+            class="{{ message.tags }} text-danger"
+            {%
+            endif
+            %}
+          >
+            {{ message }}
+          </p>
+          {% endfor %}
+        </ul>
+        {% endif %}
       </div>
     </div>
     <!-- Include Bootstrap 5 JS and other scripts here -->

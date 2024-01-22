@@ -1,0 +1,8 @@
+.gradiant-background {
+  background: linear-gradient(to right, #e994d7, #ffffff);
+  border-radius: 10px;
+}
+
+.radio {
+  margin-left: 20px;
+}
