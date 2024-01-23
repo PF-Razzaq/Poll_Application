@@ -1,0 +1,15 @@
+body {
+  background: linear-gradient(45deg, #ff7e5f, #feb47b, #ffce87);
+  height: 100vh;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+/* Increased size of radio buttons */
+input[type="radio"] {
+  transform: scale(1.5);
+  margin: 0 8px; /* Margin between radio buttons */
+}

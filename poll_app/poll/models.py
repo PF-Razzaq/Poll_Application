@@ -3,7 +3,7 @@ from django.contrib.auth import get_user_model
 from django.db import models
 
 class UserProfile(models.Model):
-    user = ('user', models.OneToOneField(User, on_delete=models.CASCADE, default=None)),
+    user = ('user', models.OneToOneField(User, on_delete=models.CASCADE, default=None, null=True)),
     name = models.CharField(max_length=100)
     email = models.EmailField(unique=True)
     age = models.IntegerField()

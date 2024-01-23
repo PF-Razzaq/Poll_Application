@@ -1,5 +1,5 @@
 from django.contrib import admin
-from poll.models import UserProfile
+from .models import UserProfile
 
 class UserProfileAdmin(admin.ModelAdmin):
     readonly_fields = ('nationality',)

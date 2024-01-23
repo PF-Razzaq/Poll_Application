@@ -37,7 +37,6 @@ def login_view(request):
 
         for user_profile in user_profiles:
             if email == user_profile.email and password == user_profile.password:
-                messages.success(request, 'Login successful!')
                 return redirect('index')
 
         messages.error(request, 'Incorrect email or password. Please try again.')
@@ -45,7 +44,9 @@ def login_view(request):
     return render(request, 'login.html')
 def index_view(request):
     return render(request,'index.html')
+
 def registration_view(request):
+    
     if request.method == 'POST':
         name = request.POST.get('name')
         email = request.POST.get('email')
@@ -66,5 +67,6 @@ def registration_view(request):
             gender=gender,
             password = password
         )
-        return redirect('login')     
+        return redirect('login')  
+       
     return render(request,'registration.html')
