@@ -1,9 +1,8 @@
-from django.contrib.auth import authenticate, login
 from django.shortcuts import render, redirect
-from .forms import RegistrationForm
 from django.contrib import messages
-from .models import UserProfile
-from django.shortcuts import get_object_or_404
+from django.http import HttpResponse
+from .models import UserProfile,SaveRecord
+
 
 
 # def register(request):
@@ -37,6 +36,7 @@ def login_view(request):
 
         for user_profile in user_profiles:
             if email == user_profile.email and password == user_profile.password:
+                messages.success(request, 'Login successful!')
                 return redirect('index')
 
         messages.error(request, 'Incorrect email or password. Please try again.')
@@ -46,7 +46,6 @@ def index_view(request):
     return render(request,'index.html')
 
 def registration_view(request):
-    
     if request.method == 'POST':
         name = request.POST.get('name')
         email = request.POST.get('email')
@@ -70,3 +69,19 @@ def registration_view(request):
         return redirect('login')  
        
     return render(request,'registration.html')
+
+def saveRecord(request):
+    if request.method == 'POST':
+        question = request.POST.get('questions')
+        option = request.POST.get('option')
+
+        SaveRecord.objects.create(
+            question=question,
+            option=option,
+        )
+
+        return redirect('login')
+    return render(request,'index.html')
+
+def poll_view(request):
+    return render(request,'poll.html')

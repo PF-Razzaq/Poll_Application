@@ -20,3 +20,10 @@ class UserProfile(models.Model):
             return "No associated user"
         
 User = get_user_model()
+
+class SaveRecord(models.Model):
+    question = models.TextField(max_length=300)
+    option = models.CharField(max_length=100)
+
+    def __str__(self):
+        return f"Question: {self.question}, Options: {self.option}"
