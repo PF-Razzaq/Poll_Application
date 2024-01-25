@@ -4,20 +4,28 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'css/index.css' %}" />
+
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
     />
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="{% static 'js/index.js' %}"></script>
     <title>Document</title>
   </head>
   <body>
-    <div>
-      <form action="" method="post">
-        {% csrf_token %}
-        <div id="savedQuestions" class="mt-3"></div>
-      </form>
-    </div>
+    <form action="{% url 'poll' %}" method="post">
+      {% csrf_token %}
+      <div id="savedQuestions" class="mt-3"></div>
+      <button type="submit" class="btn btn-success">Submit</button>
+    </form>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{% static 'js/index.js' %}"></script>
+
+    <script>
+      // Display saved questions when the page loads
+      displaySavedQuestions();
+    </script>
   </body>
 </html>

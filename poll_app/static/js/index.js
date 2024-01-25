@@ -38,9 +38,12 @@ function saveQuestionOptions() {
 
   localStorage.setItem("savedQuestions", JSON.stringify(savedQuestions));
 
-  displaySavedQuestions();
-
+  // Clear the form and hide the form container
   clearForm();
+
+  // Display saved questions and redirect to /poll/
+  displaySavedQuestions();
+  redirecttopoll();
 }
 
 function displaySavedQuestions() {
@@ -54,31 +57,29 @@ function displaySavedQuestions() {
     const savedQuestionElement = document.createElement("div");
     savedQuestionElement.innerHTML = `
       <div class="mb-3">
-        <label class="form-label">${questionData.question}</label>
+        <label class="form-label" name="questions">${
+          questionData.question
+        }</label>
         ${questionData.options
           .map(
             (option, optionIndex) => `
           <div class="form-check">
-            <input type="radio" id="choose_${index + 1}_${
+            <input type="radio" name="choose" id="choose_${index + 1}_${
               optionIndex + 1
-            }" class="form-check-input" disabled>
+            }" class="form-check-input">
             <label class="form-check-label">${option}</label>
           </div>
         `
           )
           .join("")}
-          <button
-            type="button"
-            class="btn btn-primary"
-            onclick="saveRecord(${index})" // Pass the index to identify which question to save
-          >
-            Save Record
-          </button>
       </div>
     `;
     savedQuestionsContainer.appendChild(savedQuestionElement);
   });
+  clearForm();
 }
+
+// Attach the onclick handler to your button
 
 function saveRecord(index) {
   // Handle saving the record for the specific question (use the index)
@@ -98,3 +99,7 @@ function clearForm() {
 }
 
 displaySavedQuestions();
+
+function redirecttopoll() {
+  window.location.href = "/poll/";
+}

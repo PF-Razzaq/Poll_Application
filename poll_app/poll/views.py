@@ -80,8 +80,8 @@ def saveRecord(request):
             option=option,
         )
 
-        return redirect('login')
-    return render(request,'index.html')
+        return redirect('poll')
+    return render(request,'poll.html')
 
 def poll_view(request):
     return render(request,'poll.html')
