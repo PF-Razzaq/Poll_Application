@@ -56,23 +56,21 @@ function displaySavedQuestions() {
   savedQuestions.forEach((questionData, index) => {
     const savedQuestionElement = document.createElement("div");
     savedQuestionElement.innerHTML = `
-      <div class="mb-3">
-        <label class="form-label" name="questions">${
-          questionData.question
-        }</label>
-        ${questionData.options
-          .map(
-            (option, optionIndex) => `
-          <div class="form-check">
-            <input type="radio" name="choose" id="choose_${index + 1}_${
-              optionIndex + 1
-            }" class="form-check-input">
-            <label class="form-check-label">${option}</label>
-          </div>
-        `
-          )
-          .join("")}
-      </div>
+  <div class="mb-3">
+  <label class="form-label" name="questions">${questionData.question}</label>
+  ${questionData.options
+    .map(
+      (option, optionIndex) => `
+        <div class="form-check">
+          <input type="radio" name="choose_${index + 1}" id="choose_${
+        index + 1
+      }_${optionIndex + 1}" class="form-check-input" value="${option}">
+          <label class="form-check-label">${option}</label>
+        </div>
+      `
+    )
+    .join("")}
+</div>
     `;
     savedQuestionsContainer.appendChild(savedQuestionElement);
   });

@@ -1,9 +1,14 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.http import HttpResponse
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import user_passes_test
+from django.contrib.admin.views.decorators import staff_member_required
 from .models import UserProfile,SaveRecord
 
-
+def staff_test(user):
+    print("Staff test executed. Is staff?", user.is_staff)
+    return user.is_superuser
 
 # def register(request):
 #     if request.method == 'POST':
@@ -36,13 +41,15 @@ def login_view(request):
 
         for user_profile in user_profiles:
             if email == user_profile.email and password == user_profile.password:
-                messages.success(request, 'Login successful!')
-                return redirect('index')
+                return redirect('poll')
 
         messages.error(request, 'Incorrect email or password. Please try again.')
 
+
     return render(request, 'login.html')
+@user_passes_test(staff_test, login_url='login/')
 def index_view(request):
+    print("Index view accessed.")
     return render(request,'index.html')
 
 def registration_view(request):
@@ -73,15 +80,18 @@ def registration_view(request):
 def saveRecord(request):
     if request.method == 'POST':
         question = request.POST.get('questions')
-        option = request.POST.get('option')
+        choose = request.POST.get('choose')
 
         SaveRecord.objects.create(
             question=question,
-            option=option,
+            choose=choose,
         )
 
         return redirect('poll')
     return render(request,'poll.html')
 
+# @user_passes_test(lambda user: user.is_staff, login_url='login/')
+
+@login_required(login_url='login/')
 def poll_view(request):
     return render(request,'poll.html')

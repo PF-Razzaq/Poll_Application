@@ -17,7 +17,7 @@
       integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
       crossorigin="anonymous"
     ></script>
-    <title>{% block title %}My App{% endblock %}</title>
+    <title>{% block title %}Polling Application{% endblock %}</title>
     <!-- Include Bootstrap 5 CSS link here -->
   </head>
 
@@ -52,25 +52,25 @@
           <a href="{% url 'registration' %}" class="btn btn-primary"
             >Registration User</a
           >
+          {% if messages %}
+          <ul class="messages">
+            {% for message in messages %}
+            <p
+              {%
+              if
+              message.tags
+              %}
+              class="{{ message.tags }} text-danger"
+              {%
+              endif
+              %}
+            >
+              {{ message }}
+            </p>
+            {% endfor %}
+          </ul>
+          {% endif %}
         </form>
-        {% if messages %}
-        <ul class="messages">
-          {% for message in messages %}
-          <p
-            {%
-            if
-            message.tags
-            %}
-            class="{{ message.tags }} text-danger"
-            {%
-            endif
-            %}
-          >
-            {{ message }}
-          </p>
-          {% endfor %}
-        </ul>
-        {% endif %}
       </div>
     </div>
     <!-- Include Bootstrap 5 JS and other scripts here -->

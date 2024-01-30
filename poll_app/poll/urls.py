@@ -3,7 +3,7 @@ from . import views
 from django.views.generic import RedirectView
 urlpatterns = [
     path('login/', views.login_view, name='login'),
-    path('poll/', views.saveRecord, name='poll'),
+    # path('poll/', views.saveRecord, name='poll'),
     path('poll/', views.poll_view, name='poll'),
     path('index/', views.index_view, name='index'), 
     path('registration/', views.registration_view, name='registration'), 
